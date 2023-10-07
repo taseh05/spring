@@ -1,0 +1,11 @@
+version: '2.2'
+services:
+  springbootdemo:
+    build:
+      context: ./
+      dockerfile: Dockerfilejdk11
+    image: springbootdemo
+    expose: 
+      - 9098
+    ports:
+      - 8090:9098

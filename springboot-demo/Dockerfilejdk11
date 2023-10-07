@@ -1,0 +1,8 @@
+FROM adoptopenjdk/openjdk11:ubi
+COPY target/*.jar app.jar
+
+RUN touch 1.log
+
+RUN echo "file created during container setup" > 1.log 
+
+ENTRYPOINT ["java","-jar","/app.jar"]

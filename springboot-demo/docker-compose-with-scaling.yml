@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  springbootdemo:
+    build:
+      context: ./
+      dockerfile: Dockerfilejdk11
+    image: springbootdemo
+    expose: 
+      - 9098
+
+  loadbalancer:
+    container_name: nginx
+    image: nginx
+    expose: 
+      - 80
+    ports:
+      - 8002:80
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on: 
+      - springbootdemo
